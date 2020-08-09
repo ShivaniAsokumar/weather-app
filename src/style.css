@@ -1,0 +1,144 @@
+@import 'https://fonts.googleapis.com/css2?family=Rubik&display=swap';
+
+* {
+	box-sizing: border-box;
+	padding: none;
+	font-family: 'Rubik', sans-serif;
+	font-weight: bolder;
+}
+
+body {
+	background-color: #333333;
+	color: #333333;
+}
+
+/** Header **/
+.header {
+	font-size: 5rem;
+	text-align: center;
+	color: white;
+	padding: 1rem;
+
+	background-image: linear-gradient(to right, #3a86ff, #696de9, #a392e0);
+}
+
+/** App.js **/
+#input {
+	width: 60%;
+
+	margin-left: 1rem;
+	margin-right: 1rem;
+	margin-bottom: 0rem;
+}
+
+#inputGroup-sizing-default {
+	font-size: 1.4rem;
+	padding-right: 1rem;
+	padding-left: 1rem;
+}
+
+#form-control {
+	height: 3rem;
+	font-size: 1.3rem;
+}
+
+.flex-container {
+	display: flex;
+	flex-direction: row;
+}
+
+.flex-item {
+	justify-content: space-around;
+	margin-top: 1rem;
+	margin-bottom: 1rem;
+}
+
+#submit-button {
+	background-image: linear-gradient(to right, #3a86ff, #696de9, #a392e0);
+	border: none;
+	font-size: 1.5rem;
+}
+
+.showcase-container {
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	grid-gap: 1rem;
+	padding: 1rem;
+	padding-top: 0rem !important;
+	font-size: 2rem;
+	align-content: center;
+}
+
+.showcase-container > div {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+	padding: 1rem;
+	color: white;
+
+	background-attachment: fixed;
+	background-size: cover;
+
+	max-width: 100%;
+}
+
+.temp-container {
+	grid-column: 1/4;
+	grid-row: 2/5;
+}
+
+.temp-container-span {
+	font-size: 7rem;
+}
+
+#temp-unit {
+	font-size: 5rem;
+	font-weight: normal;
+}
+
+.high-low-temp {
+	grid-column: 4/5;
+	grid-row: 2/4;
+	padding: 2rem;
+}
+
+.high-temp-span {
+	font-size: 3.5rem;
+}
+
+.sunrise-sunset {
+	grid-column: 4/5;
+	grid-row: 4/5;
+}
+
+.fa-sun {
+	color: #ff9234;
+}
+
+.fa-cloud-sun {
+	color: #10375c;
+}
+
+.city {
+	grid-column: 2/4;
+	font-size: 4rem;
+}
+.humidity {
+	grid-column: 2/3;
+	grid-row: 5/6;
+}
+.feels-like {
+	grid-column: 1/2;
+	grid-row: 5/6;
+}
+
+.visibility {
+	grid-column: 4/5;
+	grid-row: 5/6;
+}
+
+.wind-speed {
+	grid-column: 3/4;
+	grid-row: 5/6;
+}
