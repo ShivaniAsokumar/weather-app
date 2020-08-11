@@ -17,7 +17,8 @@ class App extends Component {
 		feelsLike: 0,
 		humidity: 0,
 		visibility: 0,
-		windSpeed: 0
+		windSpeed: 0,
+		inputVal: ''
 	};
 
 	// * Gets Sunrise and Sunset Times
@@ -40,6 +41,9 @@ class App extends Component {
 
 		const apiKey = '5e4a28e87e467ba3224391dff8c180fd';
 		const units = 'imperial';
+
+		const value = this.state.inputVal;
+		await this.setState({ city: value });
 
 		await axios
 			.get(`http://api.openweathermap.org/data/2.5/weather?q=${this.state.city}&appid=${apiKey}&units=${units}`)
@@ -91,6 +95,7 @@ class App extends Component {
 				console.log(err);
 			});
 	};
+
 	render() {
 		return (
 			<div>
@@ -105,7 +110,7 @@ class App extends Component {
 							aria-label="Default"
 							aria-describedby="inputGroup-sizing-default"
 							placeholder="Enter City Name"
-							onChange={(e) => this.setState({ city: e.target.value })}
+							onChange={(e) => this.setState({ inputVal: e.target.value })}
 						/>
 					</InputGroup>
 

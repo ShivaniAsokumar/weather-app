@@ -14,27 +14,22 @@ class Showcase extends Component {
 			color: 'white'
 		};
 
+		const atmos_weather = [ 'Mist', 'Smoke', 'Haze', 'Dust', 'Fog', 'Sand', 'Ash', 'Tornado', 'Squall' ];
 		if (main === 'Clouds') {
 			style.backgroundImage = `url(${Clouds})`;
-		}
-		if (main === 'Clear') {
+		} else if (main === 'Clear') {
 			style.backgroundImage = `url(${Clear})`;
-		}
-		if (main === 'Drizzle') {
+		} else if (main === 'Drizzle') {
 			style.backgroundImage = `url(${Drizzle})`;
-		}
-		if (main === 'Atmosphere') {
+		} else if (atmos_weather.includes(`${main}`)) {
 			style.backgroundImage = `url(${Atmosphere})`;
 			style.color = '#333';
-		}
-		if (main === 'Rain') {
+		} else if (main === 'Rain') {
 			style.backgroundImage = `url(${Rain})`;
-		}
-		if (main === 'Snow') {
+		} else if (main === 'Snow') {
 			style.backgroundImage = `url(${Snow})`;
 			style.color = '#333';
-		}
-		if (main === 'Thunderstorm') {
+		} else if (main === 'Thunderstorm') {
 			style.backgroundImage = `url(${Thunderstorm})`;
 		}
 		return style;
@@ -69,57 +64,88 @@ class Showcase extends Component {
 		return (
 			<div className="showcase-container">
 				<div className="day" style={this.getStyle(main)}>
-					<p>{day[date.getDay()]}</p>
+					<p className="sub-heading">{temp ? day[date.getDay()] : ''}</p>
 				</div>
 				<div className="city" style={this.getStyle(main)}>
 					<p>{city}</p>
 				</div>
 				<div className="time" style={this.getStyle(main)}>
-					<p>
-						{hours}:{minutes}
-						{''} {AmOrPm}
-					</p>
+					<p className="sub-heading">{temp ? `${hours}:${minutes} ${AmOrPm}` : ''}</p>
 				</div>
 				<div className="temp-container" style={this.getStyle(main)}>
 					<p>
-						<span className="temp-container-span">{temp}</span>
-						<span id="temp-unit"> {'  '}&#8457;</span>
-						<br /> {description}
+						<span className="temp-container-span">
+							{temp ? (
+								<p>
+									{temp} <span id="temp-unit">&#8457;</span>
+								</p>
+							) : (
+								''
+							)}
+						</span>
+						{description ? <span className="sub-heading">{description}</span> : ''}
 					</p>
 				</div>
 				<div className="high-low-temp" style={this.getStyle(main)}>
 					<p>
-						High | Low <br />
-						<span className="high-temp-span">{highTemp + ' '} </span> |
-						<span className="low-temp-span"> {' ' + lowTemp}</span>
+						{highTemp ? <span className="sub-heading">High | Low </span> : ''} <br />
+						<span className="high-temp-span">{highTemp ? `${highTemp} | ` : ''} </span>
+						<span className="low-temp-span"> {lowTemp ? `${lowTemp} ` : ''}</span>
 					</p>
 				</div>
 				<div className="sunrise-sunset" style={this.getStyle(main)}>
 					<p>
-						<i className="fas fa-sun" /> {sunrise} <br />
-						<i className="fas fa-cloud-sun" />
-						{' ' + sunset}
+						{sunrise ? (
+							<div className="sub-heading">
+								<i className="fas fa-sun" /> {sunrise}
+							</div>
+						) : (
+							''
+						)}
+						{sunset ? (
+							<div className="sub-heading">
+								<i className="fas fa-cloud-sun" /> {sunset}{' '}
+							</div>
+						) : (
+							''
+						)}
 					</p>
 				</div>
 				<div className="feels-like" style={this.getStyle(main)}>
-					<p>
-						Feels Like <br /> {feelsLike + ' '}&#8457;
-					</p>
+					{feelsLike ? (
+						<p>
+							<span className="sub-heading">Feels Like</span> <br /> {feelsLike} &#8457;
+						</p>
+					) : (
+						''
+					)}
 				</div>
 				<div className="humidity" style={this.getStyle(main)}>
-					<p>
-						Humidity <br /> {humidity}%
-					</p>
+					{humidity ? (
+						<p>
+							<span className="sub-heading">Humidity</span> <br /> {humidity}
+						</p>
+					) : (
+						''
+					)}
 				</div>
 				<div className="visibility" style={this.getStyle(main)}>
-					<p>
-						Visibility <br /> {visibility} ft
-					</p>
+					{visibility ? (
+						<p>
+							<span className="sub-heading">Visibility</span> <br /> {visibility} ft
+						</p>
+					) : (
+						''
+					)}
 				</div>
 				<div className="wind-speed" style={this.getStyle(main)}>
-					<p>
-						Wind Speed <br /> {windSpeed} mph
-					</p>
+					{windSpeed ? (
+						<p>
+							<span className="sub-heading">Wing Speed</span> <br /> {windSpeed} mph
+						</p>
+					) : (
+						''
+					)}
 				</div>
 			</div>
 		);

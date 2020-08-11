@@ -57,6 +57,7 @@ body {
 	background-image: linear-gradient(to right, #3a86ff, #696de9, #a392e0);
 	border: none;
 	font-size: 1.5rem;
+	font-weight: bolder;
 }
 
 .showcase-container {
@@ -89,12 +90,16 @@ body {
 }
 
 .temp-container-span {
-	font-size: 7rem;
+	font-size: 7rem !important;
 }
 
 #temp-unit {
 	font-size: 5rem;
 	font-weight: normal;
+}
+
+.sub-heading {
+	font-size: 3rem;
 }
 
 .high-low-temp {
@@ -104,12 +109,17 @@ body {
 }
 
 .high-temp-span {
-	font-size: 3.5rem;
+	font-size: 2.5rem !important;
+	font-weight: 900;
 }
 
 .sunrise-sunset {
 	grid-column: 4/5;
 	grid-row: 4/5;
+}
+
+i {
+	font-size: 3rem;
 }
 
 .fa-sun {
@@ -122,7 +132,7 @@ body {
 
 .city {
 	grid-column: 2/4;
-	font-size: 4rem;
+	font-size: 5rem !important;
 }
 .humidity {
 	grid-column: 2/3;
