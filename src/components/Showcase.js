@@ -35,6 +35,21 @@ class Showcase extends Component {
 		return style;
 	};
 
+	capitalCase = (sentence) => {
+		let result = '';
+		if (sentence.includes(' ')) {
+			sentence = sentence.split(' ');
+			for (let word of sentence) {
+				word = word.replace(word.charAt(0), word.charAt(0).toUpperCase());
+				result = result + word + ' ';
+			}
+			return result;
+		}
+
+		sentence = sentence.replace(sentence.charAt(0), sentence.charAt(0).toUpperCase());
+		return sentence;
+	};
+
 	render() {
 		const day = [ 'Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday' ];
 		let date = new Date();
@@ -67,7 +82,7 @@ class Showcase extends Component {
 					<p className="sub-heading">{temp ? day[date.getDay()] : ''}</p>
 				</div>
 				<div className="city" style={this.getStyle(main)}>
-					<p>{city}</p>
+					<p>{this.capitalCase(city)}</p>
 				</div>
 				<div className="time" style={this.getStyle(main)}>
 					<p className="sub-heading">{temp ? `${hours}:${minutes} ${AmOrPm}` : ''}</p>
@@ -76,14 +91,15 @@ class Showcase extends Component {
 					<p>
 						<span className="temp-container-span">
 							{temp ? (
-								<p>
+								<span>
 									{temp} <span id="temp-unit">&#8457;</span>
-								</p>
+								</span>
 							) : (
 								''
 							)}
 						</span>
-						{description ? <span className="sub-heading">{description}</span> : ''}
+						<br />
+						{description ? <span className="sub-heading">{this.capitalCase(description)}</span> : ''}
 					</p>
 				</div>
 				<div className="high-low-temp" style={this.getStyle(main)}>
@@ -96,16 +112,17 @@ class Showcase extends Component {
 				<div className="sunrise-sunset" style={this.getStyle(main)}>
 					<p>
 						{sunrise ? (
-							<div className="sub-heading">
+							<span className="sub-heading">
 								<i className="fas fa-sun" /> {sunrise}
-							</div>
+							</span>
 						) : (
 							''
 						)}
+						<br />
 						{sunset ? (
-							<div className="sub-heading">
+							<span className="sub-heading">
 								<i className="fas fa-cloud-sun" /> {sunset}{' '}
-							</div>
+							</span>
 						) : (
 							''
 						)}
@@ -123,7 +140,7 @@ class Showcase extends Component {
 				<div className="humidity" style={this.getStyle(main)}>
 					{humidity ? (
 						<p>
-							<span className="sub-heading">Humidity</span> <br /> {humidity}
+							<span className="sub-heading">Humidity</span> <br /> {humidity}%
 						</p>
 					) : (
 						''
