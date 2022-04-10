@@ -17,6 +17,7 @@ class Showcase extends Component {
 		const atmos_weather = [ 'Mist', 'Smoke', 'Haze', 'Dust', 'Fog', 'Sand', 'Ash', 'Tornado', 'Squall' ];
 		if (main === 'Clouds') {
 			style.backgroundImage = `url(${Clouds})`;
+			style.color = '#333';
 		} else if (main === 'Clear') {
 			style.backgroundImage = `url(${Clear})`;
 		} else if (main === 'Drizzle') {
@@ -76,6 +77,7 @@ class Showcase extends Component {
 			windSpeed,
 			main
 		} = this.props;
+
 		return (
 			<div className="showcase-container">
 				<div className="day" style={this.getStyle(main)}>
@@ -104,9 +106,9 @@ class Showcase extends Component {
 				</div>
 				<div className="high-low-temp" style={this.getStyle(main)}>
 					<p>
-						{highTemp ? <span className="sub-heading">High | Low </span> : ''} <br />
-						<span className="high-temp-span">{highTemp ? `${highTemp} | ` : ''} </span>
-						<span className="low-temp-span"> {lowTemp ? `${lowTemp} ` : ''}</span>
+						{highTemp ? <span className="sub-heading">High | Low &#8457;</span> : ''} <br />
+						<span className="high-temp-span ">{highTemp ? `${highTemp}` : ''}</span>
+						<span className="low-temp-span "> {lowTemp ? ` | ${lowTemp} ` : ''}</span>
 					</p>
 				</div>
 				<div className="sunrise-sunset" style={this.getStyle(main)}>
